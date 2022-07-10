@@ -16,7 +16,8 @@ public:
     vector<vector<string> > groupAnagrams(vector<string>& strs) {
         unordered_map<string, vector<string>> m;
         for (int i = 0; i < strs.size(); i++) {
-            string key = getKey(strs[i]);
+            // get unique key for given string based on number of occurence of each char
+            string key = getKey(strs[i]); 
             m[key].push_back(strs[i]);
         }
         

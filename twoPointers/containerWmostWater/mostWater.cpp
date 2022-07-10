@@ -11,6 +11,8 @@ using namespace std;
     2 pointers outside in, greedily iterate pointer w/ lower height
     Time: O(n)
     Space: O(1)
+
+    https://leetcode.com/problems/container-with-most-water/
 */
 
 class Solution {

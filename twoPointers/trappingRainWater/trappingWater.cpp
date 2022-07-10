@@ -32,11 +32,11 @@ public:
 
             if(leftMaxHt < rightMaxHt){
                 l++; 
-                totalTrapped += (leftMaxHt - heights[l])>0?(leftMaxHt - heights[l]) :0;
+                totalTrapped += (leftMaxHt - heights[l])>0 ?(leftMaxHt - heights[l]) : 0;
                 leftMaxHt = max(leftMaxHt, heights[l]);
             }else{
                 r--; 
-                totalTrapped += (rightMaxHt - heights[r])>0?(rightMaxHt - heights[r]):0;
+                totalTrapped += (rightMaxHt - heights[r])>0 ?(rightMaxHt - heights[r]) :0;
                 rightMaxHt = max(rightMaxHt, heights[r]);
             }
 
