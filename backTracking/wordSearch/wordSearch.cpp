@@ -5,13 +5,23 @@
     DFS traversal, set visited cells to '#', search in 4 directions, backtrack
     Time: O(n x 3^l) -> n = # of cells, l = length of word
     Space: O(l)
+              Strategy :
+                As the word in matrix can start at any position so we have to check for all
+                positions whether each position can be a starting point!!
+                
+                Now the logic is simple for every call we have index variable which shows how
+                much chars of word are already found in current dfs call 
+                if at any point we found a mismatch between word[index] and baord[x][y] then that branch becomes invalid for us
+                
+                We use backtracking to make sure that each position/block of matrix 
+                is visited once in a branch!!![important][visited check]
 */
 #include<bits/stdc++.h>
 using namespace std;
 
 class Solution {
 public:
-    bool exist(vector<vector<char>>& board, string word) {
+    bool exist(vector<vector<char> >& board, string word) {
         int m = board.size();
         int n = board[0].size();
         
@@ -38,16 +48,18 @@ private:
             return true;
         }
         
-        board[i][j] = '#';
-        
-        if (dfs(board, word, index + 1, i - 1, j, m, n)
-            || dfs(board, word, index + 1, i + 1, j, m, n)
-            || dfs(board, word, index + 1, i, j - 1, m, n)
-            || dfs(board, word, index + 1, i, j + 1, m, n)) {
+        board[i][j] = '#'; // marking it visited with non-alphabet
+
+        // check if we can go all the way to end of string 
+        if (dfs(board, word, index + 1, i - 1, j, m, n)       // up
+            || dfs(board, word, index + 1, i + 1, j, m, n)    // down
+            || dfs(board, word, index + 1, i, j - 1, m, n)    // left
+            || dfs(board, word, index + 1, i, j + 1, m, n)) { // right
             return true;
         }
-        
-        board[i][j] = word[index];
+        // if the above path didnt succeed, backtrack to reverse
+        // markings of visited positions
+        board[i][j] = word[index]; // backtrack step
         return false;
     }
 };
