@@ -11,6 +11,7 @@ using namespace std;
     If car behind finishes faster then catches up to fleet, else creates new fleet
     Time: O(n log n)
     Speed: O(n)
+    https://leetcode.com/problems/car-fleet/
 */
 
 class Solution {

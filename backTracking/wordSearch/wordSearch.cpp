@@ -38,28 +38,28 @@ public:
         return false;
     }
 private:
-    bool dfs(vector<vector<char>>& board, string word,
-        int index, int i, int j, int m, int n) {
+    bool dfs(vector<vector<char> >& board, string word,
+             int index, int r, int c, int m, int n) {
         
-        if (i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word[index]) {
+        if (r < 0 || r >= m || c < 0 || c >= n || board[r][c] != word[index]) {
             return false;
         }
         if (index == word.size() - 1) {
             return true;
         }
         
-        board[i][j] = '#'; // marking it visited with non-alphabet
+        board[r][c] = '#'; // marking it visited with non-alphabet
 
         // check if we can go all the way to end of string 
-        if (dfs(board, word, index + 1, i - 1, j, m, n)       // up
-            || dfs(board, word, index + 1, i + 1, j, m, n)    // down
-            || dfs(board, word, index + 1, i, j - 1, m, n)    // left
-            || dfs(board, word, index + 1, i, j + 1, m, n)) { // right
+        if (dfs(board, word, index + 1, r - 1, c, m, n)       // up
+            || dfs(board, word, index + 1, r + 1, c, m, n)    // down
+            || dfs(board, word, index + 1, r, c - 1, m, n)    // left
+            || dfs(board, word, index + 1, r, c + 1, m, n)) { // right
             return true;
         }
         // if the above path didnt succeed, backtrack to reverse
         // markings of visited positions
-        board[i][j] = word[index]; // backtrack step
+        board[r][c] = word[index]; // backtrack step
         return false;
     }
 };
