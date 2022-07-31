@@ -5,6 +5,7 @@ using namespace std;
 #define mod 1000000007
 
 /*
+    Prim's Algorithm 
     Given array of points, return min cost to connect all points
     All points have 1 path b/w them, cost is Manhattan distance
 

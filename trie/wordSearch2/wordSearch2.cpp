@@ -42,7 +42,7 @@ public:
         
         TrieNode* node = root;
         vector<string> result;
-        
+        // start from each cell and search for word using dfs
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 search(board, i, j, m, n, node, "", result);
@@ -93,7 +93,7 @@ private:
     search(board, i + 1, j, m, n, node, word, result);
     search(board, i, j - 1, m, n, node, word, result);
     search(board, i, j + 1, m, n, node, word, result);
-    
+    // backtrack once this dfs search is done
     board[i][j] = c;
 }
     
