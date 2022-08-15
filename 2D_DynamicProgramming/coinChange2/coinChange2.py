@@ -37,8 +37,9 @@ class Solution:
         # Time: O(n*m)
         # Memory: O(n*m) => 2d grid of  amount X coins
         # filling grid amount X coins each col at a time
+        # dp[a][i] => number of ways of getting amount 'a' with coins from ith index to n-1 index
     def change_DP(self, amount: int, coins: List[int]) -> int:    
-        dp = [[0] * (len(coins) + 1) for i in range(amount + 1)]
+        dp = [[0] * (len(coins) + 1) for i in range(amount + 1)] # <= 2D  grid amount X coins 
         dp[0] = [1] * (len(coins) + 1) # amount 0 can be obtained by 1 way for each coin i.e by not selecting it
         for a in range(1, amount + 1): # building dp from small amt to given amount
             for i in range(len(coins) - 1, -1, -1):
@@ -50,7 +51,9 @@ class Solution:
         # DYNAMIC PROGRAMMING
         # Time: O(n*m)
         # Memory: O(n) where n = amount
-        #  dp  [ 5   4   3   2   1   0 ]     <-amount
+        #  dp     [ 5   4   3   2   1   0 ]     <-amount
+        #                            1
+        # nextDP  [ 5   4   3   2   1   0 ]     <-amount
         #                            1
     def change_DP_opt(self, amount: int, coins: List[int]) -> int:
         dp = [0] * (amount + 1)

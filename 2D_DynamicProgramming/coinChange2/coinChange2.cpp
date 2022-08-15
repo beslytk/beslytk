@@ -49,8 +49,8 @@ private:
             return dp[{i, sum}];
         }
         
-        dp[{i, sum}] = dfs(amount, coins, i, sum + coins[i])
-                     + dfs(amount, coins, i + 1, sum);
+        dp[{i, sum}] = dfs(amount, coins, i, sum + coins[i]) // taking current coin
+                     + dfs(amount, coins, i + 1, sum);       // ignore current coin
         
         return dp[{i, sum}];
     }
