@@ -28,7 +28,7 @@ public:
         
         for (int i = 1; i <= n; i++) { // iterate forward along given string (1 more than substring end idx)
             for (int j = i - 1; j >= 0; j--) {  // substring start index position
-                if (dp[j]) {
+                if (dp[j]) {                    // ! word ending at j should be found in words dict
                     string word = s.substr(j, i - j); // substring size (i-j)
                     if (words.find(word) != words.end()) {
                         dp[i] = true;  // dp for susbtring ending at ith idx is true if dp at jth idx also true

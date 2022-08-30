@@ -32,11 +32,10 @@ public:
         int minLength =  INT32_MAX;
         while (r<s.length())
         {
-            if(charCountMap[s[r]] > 0){
+            if(charCountMap[s[r]] > 0){ // found a char from t
                 counter--;
             }
             charCountMap[s[r]]--;
-            r++;
             // as long as t is present in  window range
             while (counter == 0)
             {
@@ -52,6 +51,7 @@ public:
                 }
                 l++;
             }
+            r++;
             
         }
         
@@ -77,5 +77,9 @@ int main(){
     string  s2 = "a", t2 = "aa";
     string minSubstringS2T2 = sol.minWindowSubstr(s2, t2);
     cout << "minSubstring for s2, t2 is: "<< minSubstringS2T2<<endl;
+
+    string  s3 = "ab", t3 = "a";
+    string minSubstringS3T3 = sol.minWindowSubstr(s3, t3);
+    cout << "minSubstring for s3, t3 is: "<< minSubstringS3T3<<endl;
     return 0;
 }

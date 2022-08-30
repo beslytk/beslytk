@@ -50,7 +50,7 @@ while(!q.empty())
 			break;
 		}
 		else{
-			q.push(NULL);
+			q.push(NULL); // always keep NULL at end of curr level
 		}
 	}
 	else

@@ -40,7 +40,7 @@ private:
         dfs(candidates, target, sum + candidates[start], start, curr, result);
         curr.pop_back();
         // iteration without the current element
-        dfs(candidates, target, sum, start + 1, curr, result);
+        dfs(candidates, target, sum, start + 1, curr, result);  // 2nd dfs within curren iteration
 
     }
 

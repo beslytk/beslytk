@@ -33,7 +33,7 @@ private:
 
             backTrack(n, openCount +1, closeCount, currStr+"(", result);
         }
-        if(closeCount < openCount){
+        if(closeCount < openCount){ //!imp to make sure, close bracket is only used if open braces are there
 
             backTrack(n, openCount, closeCount + 1, currStr+")", result);
         }

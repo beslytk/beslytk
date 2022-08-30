@@ -31,7 +31,7 @@ public:
     bool isValidSudoku(vector<vector<char>>& board) {
         unordered_set<char> s;
         //check each row
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {        // travelling horizontally
             for (int j = 0; j < 9; j++) {
                 if (board[i][j] == '.') {
                     continue;
@@ -43,10 +43,10 @@ public:
                     s.insert(board[i][j]);
                 }
             }
-            s.clear();
+            s.clear();  // clear, after reaching end of current row
         }
         //check each column
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {       // travelling vertically
             for (int j = 0; j < 9; j++) {
                 if (board[j][i] == '.') {
                     continue;
