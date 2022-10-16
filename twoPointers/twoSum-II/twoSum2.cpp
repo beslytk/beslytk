@@ -6,8 +6,8 @@ using namespace std;
 
 
 /*
-    Given a 1-indexed sorted int array & target:
-    Return indices (added by 1) of 2 nums that add to target
+    Given a "1-indexed" sorted int array & target:
+    Return indices (added by 1 as its 1-indexed) of 2 nums that add to target
 
     2 pointers, outside in, iterate i/j if sum is too low/high
 

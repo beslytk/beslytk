@@ -45,7 +45,34 @@ public:
         return result;
     }
 }; 
-
+//https://leetcode.com/problems/car-fleet/discuss/2183237/C%2B%2B-O(nlog(n))-%2B-Visual-Explanation-and-Clean-code
+// Monotonic Decreasing Stack
+class Solution2 {
+public:
+    int carFleet(int target, vector<int>& position, vector<int>& speed) {
+        
+        stack<float> fleets;
+        vector<pair<int, float>> pos_time; // { {position_i, timeLeft_i}, {...}, ... }
+         
+        for(int i = 0; i < position.size(); i++)
+            pos_time.push_back({ position[i], float(target - position[i]) / speed[i] });
+        
+        sort(pos_time.begin(), pos_time.end());
+                   
+        
+        for(int i = 0; i < position.size(); i++){
+            float fleet_i = pos_time[i].second;
+            // if existing items in stack have shorter time to finish, 
+            // they will get merged with current fleet     
+            while(fleets.size() && (fleet_i >= fleets.top()))
+                fleets.pop();
+            
+            fleets.push(fleet_i);
+        }
+        
+        return fleets.size();
+    }
+};
 int main(){
     Solution sol;
     int target =12;
@@ -54,3 +81,9 @@ int main(){
     cout<< "number of car fleet is: "<< sol.carFleet(target, position, speed);
     return 0;
 }
+
+// compute time taken for each car to reach target
+// store pair of position and time in a vector
+// sort the vector
+// Push cars to stack, but pop if we ecounter any slower (higher time) car in front. CARS until this slower car become a FLEET.
+// No. of cars in stack after full iteration implies numbr of FLEETS.

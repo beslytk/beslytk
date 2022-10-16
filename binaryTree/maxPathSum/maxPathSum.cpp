@@ -33,17 +33,16 @@ private:
         if (root == NULL) {
             return 0;
         }
-        // post order traversal,as both left,right
-        // subtrees path-sum need to be used
-        int left = max(dfs(root->left, maxPath), 0);
+        // post order traversal,as both left,right subtrees path-sum need to be used
+        int left = max(dfs(root->left, maxPath), 0); // max with 0 to ignore any -ve children
         int right = max(dfs(root->right, maxPath), 0);
-        // path-sum considering split at current node
-        // if this is considered, parent node cant be taken
-        int curPath = root->val + left + right;
+        
+        // path-sum considering split at current node if this is considered, parent node cant be taken
+        int curPath = root->val + left + right; // do split at curr node and ignore its parent 
         maxPath = max(maxPath, curPath);
-        // return path-sum without split, since the parent
-        // of current node could have split
-        return root->val + max(left, right);
+        
+        // return path-sum without split, since the parent of current node could have split
+        return root->val + max(left, right); // return to parent node, what we can obtain w/o split
     }
 }; 
 

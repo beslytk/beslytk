@@ -8,7 +8,7 @@ using namespace std;
     Given array of temps, return an array w/ # of days until warmer
     Ex. temperature = [73,74,75,71,69,72,76,73] -> [1,1,4,2,1,1,0,0]
     
-    Strategy: Monotonic decr stack, at each day, compare incr from prev days
+    Strategy: 'Monotonic decreasing stack', at each day, compare incr from prev days
     Time: O(n)
     Space: O(n)
 */

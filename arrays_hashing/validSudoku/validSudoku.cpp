@@ -36,7 +36,7 @@ public:
                 if (board[i][j] == '.') {
                     continue;
                 }
-                auto it = s.find(board[i][j]);
+                auto it = s.find(board[i][j]); // (i, j)
                 if (it != s.end()) {
                     return false;
                 } else {
@@ -51,7 +51,7 @@ public:
                 if (board[j][i] == '.') {
                     continue;
                 }
-                auto it = s.find(board[j][i]);
+                auto it = s.find(board[j][i]); // (j, i)
                 if (it != s.end()) {
                     return false;
                 } else {

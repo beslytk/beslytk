@@ -49,7 +49,7 @@ private:
         TreeNode* root = new TreeNode(preorder[index]);
         // find where to split inorder array into left and right subtree
         int split = 0;
-        for (int i = 0; i < inorder.size(); i++) {
+        for (int i = start; i <= end; i++) {
             if (preorder[index] == inorder[i]) {
                 split = i;
                 break;
@@ -95,10 +95,10 @@ void printLevelOrder(TreeNode* root)
 
 int main(){
     Solution sol;
-    // vector<int> preorder = {3,9,20,15,7};
-    // vector<int> inorder  = {9,3,15,20,7};
-    // TreeNode* tree = sol.buildTree(preorder, inorder);
-    // printLevelOrder(tree);
+    vector<int> preorder = {3,9,20,15,7};
+    vector<int> inorder  = {9,3,15,20,7};
+    TreeNode* tree = sol.buildTree(preorder, inorder);
+    printLevelOrder(tree);
 
     vector<int> preorder2 = {1,2,4,5,3};
     vector<int> inorder2  = {4,2,5,1,3};
@@ -111,5 +111,10 @@ int main(){
 		/ \
 	   4   5
 	*/
+    vector<int> preorder3 = {-1};
+    vector<int> inorder3  = {-1};
+    TreeNode* tree3 = sol.buildTree(preorder3, inorder3);
+    printLevelOrder(tree3); // -1
+
     return 0;
 }

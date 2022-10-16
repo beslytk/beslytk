@@ -7,7 +7,7 @@ using namespace std;
  /*
     Design stack that supports push, pop, top, & retriving min element
     
-    2 stacks, 1 normal & 1 monotonic decr, only push if lower than top
+    2 stacks, 1 normal & 1 'monotonic decreasing stack', only push if lower than top
     
     Time: O(1)
     Space: O(n)

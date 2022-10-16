@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <iterator>
 using namespace std;
  
 #define ll long long
@@ -30,6 +31,24 @@ public:
         
         return result;
     }
+};
+
+class Solution2 {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> res;
+        unordered_set<int> s(nums.begin(), nums.end());
+        for(int i=0;i<nums.size(); i++){
+            auto compIdx = s.find(target-nums[i]);
+            if(compIdx != s.end()){
+                int compId = std::distance(nums.begin(), compIdx);
+                res.push_back(i);res.push_back(compId);
+                return res;
+            }    
+        }
+         return res;
+    }
+  
 };
 
 int main(){

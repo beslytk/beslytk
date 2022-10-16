@@ -13,11 +13,14 @@ using namespace std;
 
     Time: O(m^2 x n) -> m = length of each word, n = # of words in input word list
     Space: O(m^2 x n)
+    https://leetcode.com/problems/word-ladder/
 */
 
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        
+        // unordered_set<string> dict(wordList.begin(), wordList.end());
         unordered_set<string> dict;
         for (int i = 0; i < wordList.size(); i++) {
             dict.insert(wordList[i]);
