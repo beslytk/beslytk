@@ -48,8 +48,8 @@ public:
             int n = subs.size();
             // to each existing subset, append the current number
             for (int i = 0; i < n; i++) {
-                subs.push_back(subs[i]);     // add the existing el from prev iteration of nums arr
-                subs.back().push_back(num);  // insert to 'existing el from prev iteration of nums arr', the new num and add as new entry in subs
+                subs.push_back(subs[i]);   // push a copy of existing subset from prev Iter // add the existing el from prev iteration of nums arr
+                subs.back().push_back(num); // push to subset copied in prev step, the curr num  // insert to 'existing el from prev iteration of nums arr', the new num and add as new entry in subs
             }
         }
         return subs;
@@ -87,6 +87,8 @@ public:
     }
 };
 
+
+
 int main(){
     // Solution1 sol;
     // Solution2 sol;
@@ -106,4 +108,54 @@ int main(){
     }
     
     return 0;
+}
+
+// ============================================================================
+// n = size of given integer set
+// subsets_count = 2^n
+// for i = 0 to subsets_count
+//     form a subset using the value of 'i' as following:
+//         bits in number 'i' represent index of elements to choose from original set,
+//         if a specific bit is 1 choose that number from original set and add it to current subset,
+//         e.g. if i = 6 i.e 110 in binary means that 1st and 2nd elements in original array need to be picked.
+//     add current subset to list of all subsets
+
+int get_bit(int num, int bit) {
+	int temp = (1 << bit);
+	temp = temp & num;
+	if (temp == 0) {
+		return 0;
+	}
+	return 1;
+}
+
+void get_all_subsets(vector<int>& v, vector<unordered_set<int>>& sets) {	
+	int subsets_count = pow((double)2, (double)v.size());
+	for (int i = 0; i < subsets_count; ++i) {
+		unordered_set<int> set;
+		for (int j = 0; j < v.size(); ++j) {
+			if (get_bit(i, j)) {
+				set.insert(v[j]);
+			}
+		}
+		sets.push_back(set);
+	}
+}
+
+int main() {
+  int myints[] = {8,13,3,22, 17, 39, 87, 45, 36};
+	std::vector<int> v (myints, myints + sizeof(myints) / sizeof(int) );
+	vector<unordered_set<int>> subsets;
+
+	get_all_subsets(v, subsets);
+	cout << "****Total*****" << subsets.size() << endl;
+	for (int i = 0; i < subsets.size(); ++i) {
+		cout << "{";
+		for (unordered_set<int>::iterator it = subsets[i].begin(); it != subsets[i].end(); ++it) {
+			cout << *it << ",";
+		}
+		cout << "}" << endl;
+	}
+	cout << "****Total***** = " << subsets.size() << endl;
+	return 0;
 }

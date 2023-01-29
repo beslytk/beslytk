@@ -65,8 +65,7 @@ public:
         return visited[head];
     }
 private:
-    // map old to new node
-    unordered_map<Node*, Node*> visited;
+
     // make a clone and add to map linking old with new
     Node* getClonedNode(Node* node) {
         if (node == NULL) {
@@ -79,6 +78,9 @@ private:
         visited[node] = new Node(node->val);
         return visited[node];
     }
+    
+    // map old to new node
+    unordered_map<Node*, Node*> visited;
 };
 
 class Solution2 {
@@ -105,7 +107,7 @@ public:
         while (ptr != NULL) {
             if (ptr->random == NULL) {
                 // (ptr->next) now points to its (new clone)
-                ptr->next->random == NULL;
+                ptr->next->random = NULL;
             } else {
                 // clones random points to (ptr->random = random of old node)->next 
                 // i.e clone corresponding to current ptr's random
@@ -117,7 +119,7 @@ public:
         
         Node* oldPtr = head;
         Node* newPtr = head->next; // head of new Linked list
-        Node* oldHead = head->next;
+        Node* newHead = head->next;
         // assign clone->next
         while (oldPtr != NULL) {
             // reassign original way of old LL pointers to next nodes
@@ -133,7 +135,7 @@ public:
             newPtr = newPtr->next;
         }
         
-        return oldHead;
+        return newHead;
     }
 }; 
 

@@ -1,7 +1,6 @@
 // A C++ program to count the number of ways
 // to reach n'th stair when user
 // climb 1 .. m stairs at a time.
-// Contributor: rsampaths16
 #include <iostream>
 using namespace std;
 

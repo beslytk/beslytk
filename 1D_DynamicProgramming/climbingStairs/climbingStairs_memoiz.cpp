@@ -19,7 +19,7 @@ int countWaysUtil(int n, int dp[])
 int countWays(int n)
 {
 	int dp[n + 1];
-	memset(dp, -1, sizeof dp);
+	memset(dp, -1, sizeof(dp));
 	countWaysUtil(n, dp);
 	return dp[n];
 }

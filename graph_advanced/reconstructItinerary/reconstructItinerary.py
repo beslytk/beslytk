@@ -23,6 +23,7 @@ class Solution:
                 res.append(v)
                 if dfs(v):
                     return res
+                # backtrack if prev entry for dfs didnt ret true
                 res.pop()
                 adj[cur].append(v)
             return False

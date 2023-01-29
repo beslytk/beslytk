@@ -31,17 +31,17 @@ public:
     }
 private:
     int robber(vector<int>& nums, int start, int end) {
-        int prev = 0;
         int prev2 = 0;
+        int prev = 0;
         int curr = 0;
         
         for (int i = start; i <= end; i++) {
-            curr = max(prev + nums[i], prev2);
-            prev = prev2;
-            prev2 = curr;
+            curr = max(prev2 + nums[i], prev);
+            prev2 = prev;
+            prev = curr;
         }
         
-        return prev2;
+        return prev;
     } 
 };
 int main(){

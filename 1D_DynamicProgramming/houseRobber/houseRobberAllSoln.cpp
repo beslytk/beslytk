@@ -10,11 +10,17 @@ using namespace std;
 // ~~>At every ith house robber has 2 options: a) rob current house i. 
 //                                             b) don't rob current house.
 
-// In case he is robbing the (i)th house, the money he can get till the i-th house == money robbed till (i-2)th house + money robbed at (i)th house....let's say total money robbed in this case equals to X.
-// In case he is not robbing, money robbed till i-th house==money robbed till (i-1)th house...lets say total money robbed in this case equals to Y.
+// In case he is robbing the (i)th house, 
+// the money he can get till the i-th house == money robbed till (i-2)th house + money robbed at (i)th house....
+// let's say total money robbed in this case equals to X.
+// In case he is not robbing, money robbed till i-th house==money robbed till (i-1)th house...
+// lets say total money robbed in this case equals to Y.
 // So , the maxm money he gets till i-th house is the max(X,Y).
-// Example of case (a) --> nums={2,3,2} ... Here, the robber will rob the house at index-2 as nums[index-2] + nums[index-0] > nums[index-1]
-// Example of case (b)--> nums={2,7,3} ... here maximum money robbed till index-2 will not be equal to nums[index-2] + nums[index-0]... as nums[index-1] is greater than the sum of money at both those houses ...
+// Example of case (a) --> nums={2,3,2} ... 
+// Here, the robber will rob the house at index-2 as nums[index-2] + nums[index-0] > nums[index-1]
+// Example of case (b)--> nums={2,7,3} ... 
+// here maximum money robbed till index-2 will not be equal to nums[index-2] + nums[index-0]... 
+// as nums[index-1] is greater than the sum of money at both those houses ...
 
 // We can achieve the desired solution to this problem via mutliple ways, let's start with the simpler ones
 // and then will look forward to optimize the Time and Space Complexities
@@ -86,7 +92,7 @@ public:
 // 4.Dynamic Programming (improved version)
 // Time Complexity : O(n)
 // Space complexity : O(1)
-// We can optimize the space now,
+// We can optimize the "space" now,
 // as we can see we only need to know the answer till (i-1)th idx and (i-2)th idx to have an answer for the (i)th idx.
 // And we don't really care about the whole dp-vector, so there is no point maintaining one...
 // 3 variables will do the job, prev_ans (for i-1), prev_ans2(for i-2) and curr_ans !!

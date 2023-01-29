@@ -26,7 +26,7 @@ using namespace std;
 // v
 // Any cell value-> indicates whats the numOfWays to create amount(col) when you have coins (row, row +1.. etc)
 // 
-class Solution {
+class Solution_TD {
 public:
     int change(int amount, vector<int>& coins) {
         return dfs(amount, coins, 0, 0);
@@ -40,10 +40,10 @@ private:
             return 1;
         }
         if (sum > amount) {
-            return 0;
+            return 0;            // overshooting returns 0
         }
         if (i == coins.size()) {
-            return 0;
+            return 0;            //   
         }
         if (dp.find({i, sum}) != dp.end()) {
             return dp[{i, sum}];
@@ -56,6 +56,31 @@ private:
     }
 }; 
 
+class Solution_BU {
+public:
+    int change(int amount, vector<int>& coins) {
+        int n = coins.size();
+        // no. ways
+        vector<vector<int> > dp(amount+1, vector<int>(coins.size()+1, 0) );
+        for(int a=0;a<=amount;a++){
+            dp[a][n] = 0;           // with no coin to chosse, no amount can be formed
+        }
+        for(int c=0;c<=n;c++){
+            dp[0][c] = 1;       // amount 0 can be made up in 1 way by not selecting the coin
+        }
+        
+        for(int a=1;a<=amount;a++){
+            for(int c=n-1;c>=0;c--){  // selecting coins from index c till n-1
+                int val = coins[c];
+                //1-way ignoring current coin
+                dp[a][c] = dp[a][c+1];
+                if((a-val) >= 0)
+                    dp[a][c] += dp[a-val][c]; 
+            }
+        }
+        return dp[amount][0];
+    }
+};
 int main(){
     
     return 0;

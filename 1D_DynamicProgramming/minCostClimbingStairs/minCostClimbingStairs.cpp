@@ -13,9 +13,10 @@ using namespace std;
 // We start at either step 0 or step 1. The target is to 'reach either last or second last step', whichever is 'minimum'.
 
 // Step 1 - ~~Identify a recurrence relation between subproblems~~.
-// In this problem,
+// 
 // Recurrence Relation:
 // mincost(i) = cost[i]+min(mincost(i-1), mincost(i-2))
+//
 // Base cases:
 // mincost(0) = cost[0]
 // mincost(1) = cost[1]
@@ -43,7 +44,7 @@ public:
     int minCostClimbingStairs(vector<int>& cost) {
         int n = cost.size();
         int dp[n + 1];              // array for memoization
-	    memset(dp, -1, sizeof dp);  // set to invalid value to identify if mincost computed
+	    memset(dp, -1, sizeof(dp));  // set to invalid value to identify if mincost computed
         return min(minCost(cost, n-1, dp), minCost(cost, n-2, dp)); // min of last or second last step
     }
     int minCost(vector<int>& cost, int n, int dp[]) {

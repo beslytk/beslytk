@@ -9,7 +9,9 @@ using namespace std;
     Can segment string into 1 or more dictionary words
 
     DP, at each loop, substring, check if in dict, & store
-
+        0---------------->i
+        <--------j
+        ~~~~W1~~~|````W2```
     Time: O(n^3)
     Space: O(n)
 */
@@ -25,7 +27,7 @@ public:
         int n = s.size();
         vector<bool> dp(n + 1); // +1 to include base case
         dp[0] = true;           // base case
-        
+        // dp cell values indicate true if the substring (0, index) is a word found dictionary
         for (int i = 1; i <= n; i++) { // iterate forward along given string (1 more than substring end idx)
             for (int j = i - 1; j >= 0; j--) {  // substring start index position
                 if (dp[j]) {                    // ! word ending at j should be found in words dict
@@ -41,6 +43,20 @@ public:
         return dp[n];
     }
 }; 
+
+// https://www.educative.io/m/string-segmentation
+bool can_segment_string(string s, unordered_set <string> & dictonary) {
+  for (int i = 1; i <= s.length(); ++i) {
+    string first = s.substr(0, i);
+    if (dictonary.find(first) != dictonary.end()) {
+      string second = s.substr(i);
+      if (second.empty() || dictonary.find(second) != dictonary.end() || can_segment_string(second, dictonary)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
 
 int main(){
     

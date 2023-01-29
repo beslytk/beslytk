@@ -7,7 +7,7 @@ from typing import List
 # i 2  |  1   1   0   1   0    1
 # n    |------------------------
 # s 5  |  1   0   0   0   0    1
-# |
+# | X     0   0   0   0   0    1
 # v
 # Any cell value-> indicates whats the numOfWays to create amount(col) when you have coins (row, row +1.. etc)
 # 
